@@ -1,0 +1,25 @@
+{
+  "name": "Developex",
+  "version": "0.0.0",
+  "homepage": "http://developex-interview.thecoffeine.com",
+  "authors": [
+    "Vitaliy Tsutsman <vitaliyacm@gmail.com>"
+  ],
+  "description": "App for interview",
+  "main": "index.php",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "Developex",
+    "interview"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
