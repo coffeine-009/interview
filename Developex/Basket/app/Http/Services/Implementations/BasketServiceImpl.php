@@ -10,6 +10,7 @@ namespace App\Http\Services\Implementations;
 use App\Basket;
 use App\Http\Services\BasketService;
 use App\Http\Services\Created;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class BasketServiceImpl
@@ -18,9 +19,21 @@ use App\Http\Services\Created;
  */
 class BasketServiceImpl implements BasketService {
 
+    const BASKET_NAME = 'basket.shared';
+
+
+    /**
+     * Find all baskets in memory.
+     *
+     * @return Basket
+     */
+    public function find()
+    {
+        return Cache::get( self :: BASKET_NAME );
+    }
+
     /**
      * Create basket in memory.
-     * In this case: in session
      *
      * @param Basket $basket Basket for create
      *
@@ -28,17 +41,19 @@ class BasketServiceImpl implements BasketService {
      */
     public function create(Basket $basket)
     {
-        // TODO: Implement create() method.
+        if (Cache::add(self :: BASKET_NAME, $basket, 60))
+            return $basket;
+
+        return null;
     }
 
     /**
      * Delete basket from memory.
-     * In this case: from session
      *
      * @param Basket $basket Basket for delete
      */
     public function delete(Basket $basket)
     {
-        // TODO: Implement delete() method.
+        Cache :: forget( self :: BASKET_NAME );
     }
 }

@@ -2,13 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Basket;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductAddRequest;
+use App\Http\Services\BasketService;
+use App\ShoppingBasketImpl;
+use Illuminate\Support\Facades\Response;
 
 class BasketController extends Controller
 {
+    /**
+     * @var BasketService
+     */
+    private $basketService;
+
+
+    public function __construct(BasketService $basketService) {
+        // Init
+        $this -> basketService = $basketService;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,19 +30,21 @@ class BasketController extends Controller
      */
     public function index()
     {
-        return view(
-            'welcome'
-        );
-    }
+        $basket = $this -> basketService -> find();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
+        if ($basket instanceof Basket) {
+            // Return shared basket
+            return Response::json(
+                $basket, 
+                200
+            );
+        }
+
+        // Failure
+        return Response :: json(
+            null, 
+            404
+        );
     }
 
     /**
@@ -38,7 +54,12 @@ class BasketController extends Controller
      */
     public function store()
     {
-        //
+        return Response::json(
+            $this -> basketService -> create(
+                new ShoppingBasketImpl()
+            ), 
+            201
+        );
     }
 
     /**
@@ -48,17 +69,6 @@ class BasketController extends Controller
      * @return Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
     {
         //
     }
@@ -83,5 +93,9 @@ class BasketController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addProduct(ProductAddRequest $request) {
+        return Response::json(array('ok'=>'ok'), 201);
     }
 }

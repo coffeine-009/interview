@@ -11,6 +11,13 @@
 |
 */
 
+use Illuminate\Contracts\Validation\ValidationException;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Response;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('baskets/products', 'BasketController@addProduct');
+Route::resource('baskets', 'BasketController');

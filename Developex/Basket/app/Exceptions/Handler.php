@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Contracts\Validation\ValidationException;
+use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -39,6 +41,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+//        if ($e instanceof ValidationException)
+            return abort(400, 'Bad Request');
+//            return Response::json(
+//                [
+//                    'message' => $e -> getMessage(), 
+//                    'errors' => $e -> errors()
+//                ],
+//                400
+//            );
+//        return parent::render($request, $e);
     }
 }

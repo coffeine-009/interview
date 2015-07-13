@@ -17,8 +17,14 @@ use App\Basket;
 interface BasketService {
 
     /**
+     * Find basket in memory.
+     *
+     * @return Basket
+     */
+    public function find();
+
+    /**
      * Create basket in memory.
-     * In this case: in session
      *
      * @param Basket $basket    Basket for create
      *
@@ -28,7 +34,6 @@ interface BasketService {
 
     /**
      * Delete basket from memory.
-     * In this case: from session
      *
      * @param Basket $basket    Basket for delete
      */
