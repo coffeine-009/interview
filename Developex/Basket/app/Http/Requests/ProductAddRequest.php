@@ -28,12 +28,4 @@ class ProductAddRequest extends Request
             'name' => 'required|min:3|max:64'
         ];
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function formatErrors(Validator $validator)
-    {
-        return $validator->errors()->all();
-    }
 }

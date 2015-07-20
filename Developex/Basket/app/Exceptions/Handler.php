@@ -42,7 +42,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
 //        if ($e instanceof ValidationException)
-            return abort(400, 'Bad Request');
+//            return abort(400, 'Bad Request');
 //            return Response::json(
 //                [
 //                    'message' => $e -> getMessage(), 
@@ -50,6 +50,6 @@ class Handler extends ExceptionHandler
 //                ],
 //                400
 //            );
-//        return parent::render($request, $e);
+        return parent::render($request, $e);
     }
 }

@@ -20,4 +20,4 @@ Route::get('/', function () {
 });
 
 Route::post('baskets/products', 'BasketController@addProduct');
-Route::resource('baskets', 'BasketController');
+//Route::resource('baskets', 'BasketController');
