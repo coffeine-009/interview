@@ -1,0 +1,32 @@
+.file-manager {
+    margin: 5px;
+    font-family: Arial;
+}
+
+    .file-manager a {
+        color: black;
+        text-decoration: none;
+    }
+    
+    .file-manager>table {
+        width: 100%;
+        border: solid 0 #000;
+    }
+    
+        .file-manager>table th {
+            text-align: left;
+        }
+        
+        .file-manager>table td {
+            background: linear-gradient(to bottom, #fbfbfb, #fff, #fbfbfb);
+            background: -webkit-linear-gradient(to bottom, #fbfbfb, #fff, #fbfbfb);
+            background: -o-linear-gradient(to bottom, #fbfbfb, #fff, #fbfbfb);
+            background: -moz-linear-gradient(to bottom, #fbfbfb, #fff, #fbfbfb);
+        }
+        
+        .file-manager>table td:hover {
+            background: linear-gradient(to bottom, #eaeaea, #eee, #eaeaea);
+            background: -webkit-linear-gradient(to bottom, #eaeaea, #eee, #eaeaea);
+            background: -o-linear-gradient(to bottom, #eaeaea, #eee, #eaeaea);
+            background: -moz-linear-gradient(to bottom, #eaeaea, #eee, #eaeaea);
+        }
